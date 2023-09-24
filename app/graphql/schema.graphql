@@ -1,0 +1,28 @@
+# app/graphql/schema.graphql
+type Reservation {
+  _id: ID!
+  guestName: String
+  guestContactInfo: String
+  arrivalTime: String
+  tableSize: Int
+  status: String
+}
+
+input ReservationInput {
+  guestName: String!
+  guestContactInfo: String!
+  arrivalTime: String!
+  tableSize: Int!
+  status: String
+}
+
+type Query {
+  getReservation(id: ID!): Reservation
+  getAllReservations: [Reservation]
+}
+
+type Mutation {
+  createReservation(input: ReservationInput!): Reservation
+  updateReservation(id: ID!, input: ReservationInput!): Reservation
+  cancelReservation(id: ID!): Reservation
+}
